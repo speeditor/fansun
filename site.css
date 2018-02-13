@@ -1,0 +1,232 @@
+/* FANSUN powered by Darkness stylesheet */
+
+/** Extension styling and other anti-pattern fixes **/
+
+/*** Code formatting ***/
+.skin-oasis .mw-geshi {
+    background-color: #2e353e;
+    border: 1px dashed #00b7e0;
+    color: #d5d4d4;
+}
+.skin-oasis code {
+    color: #fff;
+    background-color: #4c545e;
+    border: 1px solid #696b72;
+}
+
+/*** White page border ***/
+.skin-oasis .WikiaPage,
+.skin-oasis .WikiaArticle .toc {
+    border-color: #616871;
+}
+
+/** Dev Wiki **/
+
+/*** MediaWiki:Common.css ***/
+/**** Template:Languages ****/
+.switch-lang .selected a {
+    color: #fff;   
+}
+/**** Module:Languages ****/
+.transclude-notice-top {
+    border-bottom: 1px solid #305663;
+}
+.transclude-notice-bottom {
+    border-top: 1px solid #305663;
+}
+/**** Template:Documentation ****/
+.template-documentation .template-documentation-langs li.selected a {
+    color: #fff;
+}
+.template-documentation {
+    border: 1px solid #2b6472;
+}
+.template-documentation .template-documentation-header {
+    background: #2b6472;
+    border-bottom: 1px solid #2b6472;
+}
+.template-documentation .template-documentation-langs {
+    background: #305663;
+    border-bottom: 1px solid #2b6472;
+}
+.template-documentation .template-documentation-content .transclude-notice-bottom:last-child {
+    background: #305663;
+    border-top: 1px solid #305663;
+}
+
+/*** MediaWiki:Wikia.css ***/
+
+/*** MediaWiki:Mainpage.css ***/
+.wiki-dev.mainpage #mw-content-text {
+    color: #fff;
+    font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.wiki-dev.mainpage .forum-activity {
+    color: #d5d4d4;
+}
+.wiki-dev.mainpage .foci {
+    color: #d5d4d4;
+    margin: 0 auto;
+}
+.wiki-dev.foci .module {
+    width: calc(32% - 40px);
+}
+.wiki-dev .foci .header,
+.wiki-dev .what-we-do .header,
+.wiki-dev .things-to-remember .header {
+    color: #00b7e0;
+}
+.wiki-dev .things-to-remember .description {
+    color: #d5d4d4;
+}
+.wiki-dev .introduction .header {
+    color: #00b7e0;
+}
+
+/** Community Council Wiki **/
+
+/*** MediaWiki:Wikia.css ***/
+
+/**** Interlanguage link footer ****/
+.wiki-wikia.mainpage .WikiaArticleInterlang,
+.wiki-wikia.mw-special-Contact .WikiaArticleInterlang,
+.wiki-wikia.mw-special-Forum .WikiaArticleInterlang {
+    background: none;
+    border: 1px solid #616871;
+}
+/**** Portable Infoboxes ****/
+.wiki-wikia .portable-infobox.pi-theme-notes .pi-header {
+    background: #394e60;
+}
+.pi-theme-StaffCard, .pi-theme-VolunteerCard {
+    border: 1px solid #2b6472;
+}
+/*** Mainpage.css ***/
+/**** General ****/
+.wiki-wikia.mainpage .mainpage-box h2 {
+    color: #b7b8ba;
+}
+.wiki-wikia.mainpage .mainpage-box h2::before,
+.wiki-wikia.mainpage .mainpage-box h2::after {
+    background-color: #a2a4a6;
+}
+.wiki-wikia.mainpage .mainpage-box h3 {
+    color: #cfcfcf;
+}
+.wiki-wikia.mainpage .mainpage-more a,
+.wiki-wikia.mainpage .mainpage-more .recent a:active,
+.wiki-wikia.mainpage .mainpage-more .recent a:visited {
+    color: #4a90e2;
+}
+.wiki-wikia.mainpage .mainpage-more a:hover {
+    color: #6aaefc;
+}
+/**** Blogs ****/
+.wiki-wikia.mainpage .mainpage-blogs .blog-info {
+    border: 1px solid #3b475b;
+}
+.wiki-wikia.mainpage .mainpage-blogs .blog-info .author a,
+.wiki-wikia.mainpage .mainpage-blogs .blog-info .author a:active,
+.wiki-wikia.mainpage .mainpage-blogs .blog-info .author a:visited {
+    color: #fff;
+}
+.wiki-wikia.mainpage .mainpage-blogs .blog-info .author a:hover {
+    color: #aaa;
+}
+.wiki-wikia.mainpage .mainpage-blogs .blog-info .timestamp {
+    color: #aeafb2;
+}
+.wiki-wikia.mainpage .mainpage-blogs .blog-info .title a,
+.wiki-wikia.mainpage .mainpage-blogs .blog-info .title a:active,
+.wiki-wikia.mainpage .mainpage-blogs .blog-info .title a:visited {
+    color: #4a90e2;
+}
+.wiki-wikia.mainpage .mainpage-blogs .blog .title a:hover {
+    color: #6aaefc;
+}
+/**** FANDOM University ****/
+.wiki-wikia.mainpage .mainpage-wikiauniversity h2::before,
+.wiki-wikia.mainpage .mainpage-wikiauniversity h2::after {
+    background: #b3b8bc none repeat scroll 0% 0%;
+}
+.wiki-wikia.mainpage .mainpage-wikiauniversity .description {
+    color: #656e78;
+}
+.wiki-wikia.mainpage .mainpage-wikiauniversity .videos figcaption .title {
+    color: #4a90e2;
+}
+.wiki-wikia.mainpage .mainpage-wikiauniversity .videos .details .title {
+    color: #4a90e2;
+}
+.wiki-wikia.mainpage .mainpage-wikiauniversity .videos .details .title a, .mainpage-wikiauniversity .videos .details .title a:active, .mainpage-wikiauniversity .videos .details .title a:visited {
+    color: #4a90e2;
+}
+.wiki-wikia.mainpage .mainpage-wikiauniversity .videos .details .title a:hover {
+    color: #6aaefc;
+}
+.wiki-wikia.mainpage .mainpage-wikiauniversity .videos .details .duration {
+    color: #c5ceda;
+}
+/**** FAQ ****/
+.wiki-wikia.mainpage .mainpage-faq h4 {
+    background: #3a4756 none repeat scroll 0% 0%;
+    color: #b7b8ba;
+}
+.wiki-wikia.mainpage .mainpage-faq .faq-list {
+    background-color: #384251;
+    border: solid #3a475f;
+    border-width: 0 1px 1px;
+}
+.wiki-wikia.mainpage .mainpage-faq .faq-list a,
+.mainpage-faq .faq-list a:active,
+.mainpage-faq .faq-list a:visited {
+    color: #4a90e2;
+}
+.wiki-wikia.mainpage .mainpage-faq .faq-list a:hover {
+    color: #6aaefc;
+}
+/**** Connect ****/
+.wiki-wikia.mainpage .mainpage-connect .staff li {
+    border: 1px solid #3b475b;
+}
+.wiki-wikia.mainpage .mainpage-connect .staff .name a,
+.wiki-wikia.mainpage .mainpage-connect .staff .name a:active,
+.wiki-wikia.mainpage .mainpage-connect .staff .name a:visited {
+    color: #fff;
+}
+.wiki-wikia.mainpage .mainpage-connect .staff .name a:hover {
+    color: #aaa;
+}
+/**** Social ****/
+.wiki-wikia.mainpage .mainpage-social {
+     background-color: #373f4a;
+}
+/**** Highlight on cover code ****/
+.wiki-wikia.mainpage .mainpage-box .staff li:hover,
+.wiki-wikia.mainpage .mainpage-box .featured:hover,
+.wiki-wikia.mainpage .mainpage-box .not-featured:hover {
+    background: #3a4756;
+}
+
+/** Portability Hub **/
+
+/*** MediaWiki:Common.css ***/
+.wiki-infobox.mainpage #mw-content-text img[data-image-name="MainPageQuote2.png"] {
+    filter: brightness(5.5) saturate(1.3);
+}
+.wiki-infobox.mainpage .MPheading-text {
+    color: #00b7e0;
+}
+
+/** Community Council Wiki **/
+
+/*** Mainpage ***/
+.wiki-communitycouncil.mainpage .lcs-container > div:first-child {
+    background: #574d41 !important;
+}
+.wiki-communitycouncil.mainpage .lcs-container > div:nth-child(2) {
+    background: #304d69 !important;
+}
+.wiki-communitycouncil.mainpage .lcs-container > div:nth-child(3) {
+    background: #305f56 !important;
+}
