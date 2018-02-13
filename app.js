@@ -66,6 +66,13 @@ var FANSUN = {
             });
             $.when(mw.loader.using('user'), $.ready).then(function() {
                 FANSUN.util.unboot('ext');
+                var styles = {
+                    'mode': 'articles',
+                    'articles': 'u:speedit:mediawiki:fansun.css',
+                    'only': 'styles',
+                    'debug': true,
+                };
+                importStylesheetURI('/load.php' + FANSUN.util.param(styles));
             });
         }
     },
