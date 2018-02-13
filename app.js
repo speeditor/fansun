@@ -6,7 +6,7 @@
 // @author       http://dev.wikia.com/wiki/User:Speedit
 // @run-at       document-start
 // @license      CC BY-SA 3.0; http://creativecommons.org/licenses/by-sa/3.0/
-// @include      /.*(community|portability|vstf|dev|api)\.wikia\.com\/wiki\/.*/
+// @include      /.*(community|portability|vstf|dev|api|communitycouncil)\.wikia\.com\/wiki\/.*/
 // @grant        none
 // ==/UserScript==
 var FANSUN = {
