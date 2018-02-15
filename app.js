@@ -36,22 +36,19 @@ var FANSUN = {
         }
     },
     mw: {
-        patterns: [
-            'amd',
-            'mw,nirvana'
-        ],
+        pattern: 'if(window.mw){',
         util: function(M) {
             var N = [].slice.call(M.addedNodes),
                 toScripts = function(m) {
                     if (m.nodeName.toLowerCase() !== 'script') {
                         return false;
                     } else {
-                        var r = m.getAttribute('src') || '',
+                        var t = m.innerText || '',
                             matchScript = function(s) {
-                                return (r.indexOf(s) > -1);
+                                return (t.substring(0, FANSUN.mw.pattern.length) === s);
                             },
                             isScript = function() {
-                                return FANSUN.mw.patterns.some(matchScript);
+                                return matchScript(FANSUN.mw.pattern);
                             };
                         return isScript();
                     }
@@ -61,20 +58,27 @@ var FANSUN = {
         },
         init: function(S) {
             if (S.length === 0) { return; }
-            mw.loader.using('mediawiki.util', function() {
-                mw.config.set('wgSassParams', FANSUN.sass.params);
-                mw.config.set('wgIsDarkTheme', true);
-            });
-            $.when(mw.loader.using('user'), $.ready).then(function() {
-                FANSUN.util.unboot('ext');
-                var styles = {
-                    'mode': 'articles',
-                    'articles': 'u:speedit:mediawiki:fansun.css',
-                    'only': 'styles',
-                    'debug': true,
-                };
-                importStylesheetURI('/load.php?' + FANSUN.util.param(styles));
-            });
+            var script = {
+                window: function() {
+                    mw.config.set('wgSassParams', FANSUN.sass.params);
+                    mw.config.set('wgIsDarkTheme', true);
+                },
+                import: function() {
+                    var styles = {
+                        'mode': 'articles',
+                        'articles': 'u:speedit:mediawiki:fansun.css',
+                        'only': 'styles',
+                        'debug': true,
+                    };
+                    importStylesheetURI('/load.php?' + $.param(styles));
+                },
+                unboot: function() {
+                    FANSUN.util.unboot('ext');
+                }
+            };
+            mw.loader.using('mediawiki.legacy.wikibits', script.import);
+            mw.loader.using('wikia.window', script.window);
+            $(script.unboot);
         }
     },
     sass: {
