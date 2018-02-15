@@ -63,6 +63,7 @@ var FANSUN = {
             if (S.length === 0) { return; }
             mw.loader.using('mediawiki.util', function() {
                 mw.config.set('wgSassParams', FANSUN.sass.params);
+                mw.config.set('wgIsDarkTheme', true);
             });
             $.when(mw.loader.using('user'), $.ready).then(function() {
                 FANSUN.util.unboot('ext');
@@ -72,7 +73,7 @@ var FANSUN = {
                     'only': 'styles',
                     'debug': true,
                 };
-                importStylesheetURI('/load.php' + FANSUN.util.param(styles));
+                importStylesheetURI('/load.php?' + FANSUN.util.param(styles));
             });
         }
     },
