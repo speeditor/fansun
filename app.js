@@ -62,8 +62,8 @@ var FANSUN = {
                     'config': {
                         fn: function() {
                             window.wgSassParams = FANSUN.sass.params;
-                            if (!window.wgIsEditPage) {
-                                window.wgIsDarkTheme = FANSUN.sass.params;
+                            if (window.wgIsEditPage) {
+                                window.wgIsDarkTheme = true;
                             }
                         },
                         d: mw.loader.using(['jquery'])
