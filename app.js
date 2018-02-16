@@ -6,7 +6,7 @@
 // @author       http://dev.wikia.com/wiki/User:Speedit
 // @run-at       document-start
 // @license      CC BY-SA 3.0; http://creativecommons.org/licenses/by-sa/3.0/
-// @include      /.*(community|portability|vstf|dev|api|communitycouncil)\.wikia\.com\/wiki\/.*/
+// @include      /.*(community|portability|vstf|dev|api|communitycouncil|speedit)\.wikia\.com\/(index.php|wiki\/).*/
 // @grant        none
 // ==/UserScript==
 var FANSUN = {
@@ -36,49 +36,61 @@ var FANSUN = {
         }
     },
     mw: {
-        pattern: 'if(window.mw){',
+        pattern: 'ResourceLoaderDynamicStyles',
         util: function(M) {
             var N = [].slice.call(M.addedNodes),
-                toScripts = function(m) {
-                    if (m.nodeName.toLowerCase() !== 'script') {
+                toMarker = function(m) {
+                    if (m.nodeName.toLowerCase() !== 'meta') {
                         return false;
                     } else {
-                        var t = m.innerText || '',
-                            matchScript = function(s) {
-                                return (t.substring(0, FANSUN.mw.pattern.length) === s);
+                        var r = m.getAttribute('name') || '',
+                            matchMarker = function(s) {
+                                return (r === s);
                             },
-                            isScript = function() {
-                                return matchScript(FANSUN.mw.pattern);
+                            isMarker = function() {
+                                return matchMarker(FANSUN.mw.pattern);
                             };
-                        return isScript();
+                        return isMarker();
                     }
                 },
-                S = N.filter(toScripts);
+                S = N.filter(toMarker);
             FANSUN.mw.init(S);
         },
         init: function(S) {
             if (S.length === 0) { return; }
-            var script = {
-                window: function() {
-                    mw.config.set('wgSassParams', FANSUN.sass.params);
-                    mw.config.set('wgIsDarkTheme', true);
+            var modules = {
+                    'config': {
+                        fn: function() {
+                            window.wgSassParams = FANSUN.sass.params;
+                            if (!window.wgIsEditPage) {
+                                window.wgIsDarkTheme = FANSUN.sass.params;
+                            }
+                        },
+                        d: mw.loader.using(['jquery'])
+                    },
+                    'import': {
+                        fn: function() {
+                            var styles = {
+                                'mode': 'articles',
+                                'articles': 'u:speedit:MediaWiki:Fansun.css',
+                                'only': 'styles',
+                                'debug': true,
+                            };
+                            importStylesheetURI('/load.php?' + $.param(styles));
+                        },
+                        d: mw.loader.using(['mediawiki.legacy.wikibits', 'jquery'])
+                    },
+                    'unboot': {
+                        fn: function() {
+                            FANSUN.util.unboot('ext');
+                        },
+                        d: $.ready
+                    }
                 },
-                import: function() {
-                    var styles = {
-                        'mode': 'articles',
-                        'articles': 'u:speedit:mediawiki:fansun.css',
-                        'only': 'styles',
-                        'debug': true,
-                    };
-                    importStylesheetURI('/load.php?' + $.param(styles));
-                },
-                unboot: function() {
-                    FANSUN.util.unboot('ext');
-                }
-            };
-            mw.loader.using('mediawiki.legacy.wikibits', script.import);
-            mw.loader.using('wikia.window', script.window);
-            $(script.unboot);
+                bootloader = function(moduleName, m) {
+                     $.when(modules[moduleName].d).then(modules[moduleName].fn);
+                };
+            $.each(modules, bootloader);
         }
     },
     sass: {
@@ -181,6 +193,7 @@ var FANSUN = {
         head: {
             config: { childList: true },
             fn: function(M) {
+                M.forEach(FANSUN.mw.util);
                 M.forEach(FANSUN.sass.util);
                 FANSUN.util.boot('body', document.documentElement);
             }
@@ -202,7 +215,6 @@ var FANSUN = {
             config: { childList: true },
             fn: function(M) {
                 M.forEach(FANSUN.sass.util);
-                M.forEach(FANSUN.mw.util);
             }
         }
     }
