@@ -13,6 +13,11 @@
     background-color: #4c545e;
     border: 1px solid #696b72;
 }
+.skin-oasis #theme-solarized-light,
+.skin-oasis .ace-solarized-light {
+    background-color: #002b36;
+    color: #93a1a1;
+}
 
 /*** White page border ***/
 .skin-oasis .WikiaPage,
