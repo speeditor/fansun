@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         FANSUN powered by Darkness
 // @namespace    http://community.wikia.com/Special:MyPage
-// @version      1.0a
+// @version      1.0b
 // @description  Dark theme for official FANDOM wikis.
 // @author       http://dev.wikia.com/wiki/User:Speedit
 // @run-at       document-start
 // @license      CC BY-SA 3.0; http://creativecommons.org/licenses/by-sa/3.0/
-// @include      /.*(community|portability|vstf|dev|api|communitycouncil)\.wikia\.com\/(index.php|wiki\/).*/
+// @include      /.*(community|portability|vstf|dev|api|communitycouncil|connect)\.wikia\.com\/(index.php|wiki\/).*/
 // @grant        none
 // ==/UserScript==
 var FANSUN = {
@@ -62,6 +62,7 @@ var FANSUN = {
                     'config': {
                         fn: function() {
                             window.wgSassParams = FANSUN.sass.params;
+                            $.extend(sassParams, FANSUN.sass.params);
                             if (window.wgIsEditPage) {
                                 window.wgIsDarkTheme = true;
                             }
@@ -110,19 +111,19 @@ var FANSUN = {
             "page-opacity": "100",
             "widthType": 0
         },
-        string: '',
-        patterns: [
-            '/sasses/background-dynamic',
-            '/sass/background-dynamic'
-        ],
+        string: {
+            '/sass': '',
+            '/__load': ''
+        },
+        pattern: 'sass',
         init: function(n) {
             if (n.nodeName.toLowerCase() !== 'link') { return; }
             var h = n.getAttribute('href') || '',
                 matchSass = function(s) {
-                    return (h.indexOf(s) > -1);
+                    return (h.indexOf(s) > -1 && h.indexOf('background-dynamic') > -1);
                 },
                 isSass = function(n) {
-                    return FANSUN.sass.patterns.some(matchSass);
+                    return matchSass(FANSUN.sass.pattern);
                 };
             if (isSass()) {
                 FANSUN.sass.style(n);
@@ -139,7 +140,7 @@ var FANSUN = {
                                 return (h.indexOf(s) > -1);
                             },
                             isSass = function() {
-                                return FANSUN.sass.patterns.some(matchSass);
+                                return matchSass(FANSUN.sass.patterns);
                             };
                         return isSass();
                     }
@@ -148,17 +149,51 @@ var FANSUN = {
             S.forEach(FANSUN.sass.style);
         },
         style: function(s) {
-            var sassUrlString = FANSUN.sass.string.length > 0 ?
-                    FANSUN.sass.string :
-                    s.getAttribute('href').split('/')[6],
-                FANSUNSassString = FANSUN.util.param(FANSUN.sass.params);
-            // window.wgSassParams = FANSUNSassParams;
-            FANSUN.sass.string = FANSUN.sass.string.length > 0 ? FANSUN.sass.string : sassUrlString;
             var url = s.getAttribute('href'),
-                FANSUNURLArray = s.getAttribute('href').split('/');
-            FANSUNURLArray.splice(6, 1, FANSUNSassString);
-            var FANSUNURL = FANSUNURLArray.join('/');
-            s.setAttribute('href', FANSUNURL);
+                modeFn = {
+                    '/sass': function(mode) {
+                        if (url.indexOf(mode) === -1) { return; }
+                        var FANSUNURLArray = url.split('/'),
+                            sassUrlString = FANSUN.sass.string[mode].length > 0 ?
+                                FANSUN.sass.string[mode] :
+                                FANSUNURLArray[6],
+                            FANSUNSassString = FANSUN.util.param(FANSUN.sass.params);
+                        FANSUN.sass.string[mode] = FANSUN.sass.string.length > 0 ?
+                            FANSUN.sass.string[mode] :
+                            sassUrlString;
+                        FANSUNURLArray.splice(6, 1, FANSUNSassString);
+                        var FANSUNURL = FANSUNURLArray.join('/');
+                        s.setAttribute('href', FANSUNURL);
+                    },
+                    '/__load': function(mode) {
+                        if (url.indexOf(mode) === -1) { return; }
+                        var FANSUNURLArray = url.split('/'),
+                            sassWrapper = ['only%3Dstyles%26', '%26sass_wordmark-font'],
+                            mwSassParams = {};
+                        for (var k in FANSUN.sass.params) {
+                            mwSassParams['sass_' + k] = FANSUN.sass.params[k];
+                        }
+                        var sassUrlRegExp = new RegExp(sassWrapper.join('|')),
+                            sassUrlString = FANSUN.sass.string[mode].length > 0 ?
+                                FANSUN.sass.string[mode] :
+                                FANSUNURLArray[5],
+                            FANSUNSassString = FANSUN.util.param(mwSassParams);
+                        FANSUN.sass.string[mode] = FANSUN.sass.string.length > 0 ?
+                            FANSUN.sass.string[mode] :
+                            sassUrlString;
+                        var sassUrlArray = sassUrlString.split(sassUrlRegExp);
+                        sassUrlArray.splice(1, 1, sassWrapper[0], FANSUNSassString, sassWrapper[1]);
+                        var FANSUNSassUrlString = sassUrlArray.join('');
+                        FANSUNURLArray.splice(5, 1, FANSUNSassUrlString);
+                        var FANSUNURL = FANSUNURLArray.join('/');
+                        console.log(sassUrlArray);
+                        s.setAttribute('href', FANSUNURL);
+                    }
+                },
+                call = function(mode) {
+                    modeFn[mode](mode);
+                };
+            Object.keys(modeFn).forEach(call);
         }
     },
     modules: {
