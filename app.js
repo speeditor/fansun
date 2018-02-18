@@ -73,7 +73,7 @@ var FANSUN = {
                         fn: function() {
                             var styles = {
                                 'mode': 'articles',
-                                'articles': 'u:speedit:MediaWiki:Fansun.css',
+                                'articles': 'u:speedit:MediaWiki:FANSUN.css',
                                 'only': 'styles',
                                 'debug': true,
                             };
