@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FANSUN powered by Darkness
 // @namespace    http://community.wikia.com/Special:MyPage
-// @version      1.0b
+// @version      1.0c
 // @description  Dark theme for official FANDOM wikis.
 // @author       http://dev.wikia.com/wiki/User:Speedit
 // @run-at       document-start
