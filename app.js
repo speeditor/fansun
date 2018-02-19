@@ -6,7 +6,7 @@
 // @author       http://dev.wikia.com/wiki/User:Speedit
 // @run-at       document-start
 // @license      CC BY-SA 3.0; http://creativecommons.org/licenses/by-sa/3.0/
-// @include      /.*(community|portability|vstf|dev|api|communitycouncil|connect)\.wikia\.com\/(index.php|wiki\/).*/
+// @include      /.*(community|portability|vstf|dev|comunidad|communaute|spolecznosc|congdong|api|connect|communitycouncil)\.wikia\.com\/(index.php|wiki\/).*/
 // @grant        none
 // ==/UserScript==
 var FANSUN = {
@@ -73,7 +73,7 @@ var FANSUN = {
                         fn: function() {
                             var styles = {
                                 'mode': 'articles',
-                                'articles': 'u:speedit:MediaWiki:FANSUN.css',
+                                'articles': 'u:speedit:MediaWiki:Fansun.css',
                                 'only': 'styles',
                                 'debug': true,
                             };
@@ -111,7 +111,7 @@ var FANSUN = {
             "page-opacity": "100",
             "widthType": 0
         },
-        string: {
+        cache: {
             '/sass': '',
             '/__load': ''
         },
@@ -153,41 +153,41 @@ var FANSUN = {
                 modeFn = {
                     '/sass': function(mode) {
                         if (url.indexOf(mode) === -1) { return; }
-                        var FANSUNURLArray = url.split('/'),
-                            sassUrlString = FANSUN.sass.string[mode].length > 0 ?
-                                FANSUN.sass.string[mode] :
-                                FANSUNURLArray[6],
-                            FANSUNSassString = FANSUN.util.param(FANSUN.sass.params);
-                        FANSUN.sass.string[mode] = FANSUN.sass.string.length > 0 ?
-                            FANSUN.sass.string[mode] :
+                        var urlArray = url.split('/'),
+                            sassUrlString = FANSUN.sass.cache[mode].length > 0 ?
+                                FANSUN.sass.cache[mode] :
+                                urlArray[6],
+                            newSassString = FANSUN.util.param(FANSUN.sass.params);
+                        FANSUN.sass.cache[mode] = FANSUN.sass.cache.length > 0 ?
+                            FANSUN.sass.cache[mode] :
                             sassUrlString;
-                        FANSUNURLArray.splice(6, 1, FANSUNSassString);
-                        var FANSUNURL = FANSUNURLArray.join('/');
-                        s.setAttribute('href', FANSUNURL);
+                        urlArray.splice(6, 1, newSassString);
+                        var fansunURL = urlArray.join('/');
+                        s.setAttribute('href', fansunURL);
                     },
                     '/__load': function(mode) {
                         if (url.indexOf(mode) === -1) { return; }
-                        var FANSUNURLArray = url.split('/'),
+                        var urlArray = url.split('/'),
                             sassWrapper = ['only%3Dstyles%26', '%26sass_wordmark-font'],
-                            mwSassParams = {};
+                            mwSassParams = {},
+                            sassIndex = +urlArray.indexOf('__load')+2;
                         for (var k in FANSUN.sass.params) {
                             mwSassParams['sass_' + k] = FANSUN.sass.params[k];
                         }
                         var sassUrlRegExp = new RegExp(sassWrapper.join('|')),
-                            sassUrlString = FANSUN.sass.string[mode].length > 0 ?
-                                FANSUN.sass.string[mode] :
-                                FANSUNURLArray[5],
-                            FANSUNSassString = FANSUN.util.param(mwSassParams);
-                        FANSUN.sass.string[mode] = FANSUN.sass.string.length > 0 ?
-                            FANSUN.sass.string[mode] :
+                            sassUrlString = FANSUN.sass.cache[mode].length > 0 ?
+                                FANSUN.sass.cache[mode] :
+                                urlArray[sassIndex],
+                            mwSassString = FANSUN.util.param(mwSassParams);
+                        FANSUN.sass.cache[mode] = FANSUN.sass.cache.length > 0 ?
+                            FANSUN.sass.cache[mode] :
                             sassUrlString;
                         var sassUrlArray = sassUrlString.split(sassUrlRegExp);
-                        sassUrlArray.splice(1, 1, sassWrapper[0], FANSUNSassString, sassWrapper[1]);
-                        var FANSUNSassUrlString = sassUrlArray.join('');
-                        FANSUNURLArray.splice(5, 1, FANSUNSassUrlString);
-                        var FANSUNURL = FANSUNURLArray.join('/');
-                        console.log(sassUrlArray);
-                        s.setAttribute('href', FANSUNURL);
+                        sassUrlArray.splice(1, 1, sassWrapper[0], mwSassString, sassWrapper[1]);
+                        var fansunSassString = sassUrlArray.join('');
+                        urlArray.splice(sassIndex, 1, fansunSassString);
+                        var fansunURL = urlArray.join('/');
+                        s.setAttribute('href', fansunURL);
                     }
                 },
                 call = function(mode) {
