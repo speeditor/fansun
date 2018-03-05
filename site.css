@@ -1,7 +1,7 @@
 /* FANSUN powered by Darkness stylesheet */
-
+ 
 /** Extension styling and other anti-pattern fixes **/
-
+ 
 /*** Code formatting ***/
 .skin-oasis .mw-geshi {
     background-color: #2e353e;
@@ -18,15 +18,15 @@
     background-color: #002b36;
     color: #93a1a1;
 }
-
+ 
 /*** White page border ***/
 .skin-oasis .WikiaPage,
 .skin-oasis .WikiaArticle .toc {
     border-color: #616871;
 }
-
+ 
 /** Dev Wiki **/
-
+ 
 /*** MediaWiki:Common.css ***/
 /**** Template:Languages ****/
 .switch-lang .selected a {
@@ -58,9 +58,9 @@
     background: #305663;
     border-top: 1px solid #305663;
 }
-
+ 
 /*** MediaWiki:Wikia.css ***/
-
+ 
 /*** MediaWiki:Mainpage.css ***/
 .wiki-dev.mainpage #mw-content-text {
     color: #fff;
@@ -87,11 +87,51 @@
 .wiki-dev .introduction .header {
     color: #00b7e0;
 }
-
-/** Community Council Wiki **/
-
+ 
+/** Community Central Wiki **/
+ 
+/*** Wordmark rollback ***/
+.skin-oasis.wiki-wikia .wds-community-header__wordmark img,
+.skin-oasis.wiki-wikia.editor .EditPageHeader > .wordmark img,
+.ChatWindow #ChatHeader .wordmark img[src*="central"],
+.ChatWindow #Rail .public .wordmark[src*="central"] {
+    background-repeat: no-repeat;
+    background-position: top left;
+    box-sizing: border-box;
+}
+.skin-oasis.wiki-wikia .wds-community-header__wordmark img,
+.skin-oasis.wiki-wikia.editor .EditPageHeader > .wordmark img {
+    background-image: url('https://vignette.wikia.nocookie.net/central/images/8/89/Wiki-wordmark.png/revision/20180206165044');
+}
+.skin-oasis.wiki-wikia .wds-community-header__wordmark img {
+    padding-top: 65px;
+    height: 65px;
+    width: 125px;
+}
+@media only screen and (max-width: 1083px) {
+    .skin-oasis.wiki-wikia .wds-community-header__wordmark img {
+        background-size: 94px 49px;
+        height: 94px;
+        padding-top: 49px;
+        width: 94px;
+    }
+}
+.skin-oasis.wiki-wikia.editor .EditPageHeader > .wordmark img {
+    background-size: 86px 45px;
+    padding-top: 45px;
+    height: 45px;
+    width: 86px;
+}
+.ChatWindow #ChatHeader .wordmark img[src*="central"],
+.ChatWindow #Rail .public .wordmark[src*="central"] {
+    background-image: url('https://vignette.wikia.nocookie.net/central/images/8/89/Wiki-wordmark.png/revision/20180206165044/scale-to-width-down/58');
+    height: 30px;
+    padding-top: 30px;
+    width: 58px;
+}
+ 
 /*** MediaWiki:Wikia.css ***/
-
+ 
 /**** Interlanguage link footer ****/
 .wiki-wikia.mainpage .WikiaArticleInterlang,
 .wiki-wikia.mw-special-Contact .WikiaArticleInterlang,
@@ -212,9 +252,9 @@
 .wiki-wikia.mainpage .mainpage-box .not-featured:hover {
     background: #3a4756;
 }
-
+ 
 /** Portability Hub **/
-
+ 
 /*** MediaWiki:Common.css ***/
 .wiki-infobox.mainpage #mw-content-text img[data-image-name="MainPageQuote2.png"] {
     filter: brightness(5.5) saturate(1.3);
@@ -222,9 +262,9 @@
 .wiki-infobox.mainpage .MPheading-text {
     color: #00b7e0;
 }
-
+ 
 /** Community Council Wiki **/
-
+ 
 /*** Mainpage ***/
 .wiki-communitycouncil.mainpage .lcs-container > div:first-child {
     background: #574d41 !important;
