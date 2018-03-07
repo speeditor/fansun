@@ -262,6 +262,34 @@
 .wiki-infobox.mainpage .MPheading-text {
     color: #00b7e0;
 }
+
+/** VSTF Wiki **/
+
+/*** Wordmark cleanup (crop) ***/
+.skin-oasis .wds-community-header__wordmark img,
+.skin-oasis.editor .EditPageHeader > .wordmark img {
+    background-image: url('https://vignette4.wikia.nocookie.net/vstf/images/8/89/Wiki-wordmark.png');
+    background-repeat: no-repeat;
+    background-position: top left;
+    box-sizing: border-box;
+    padding-top: 65px;
+    height: 65px;
+    width: 55px;
+}
+@media only screen and (max-width: 1083px) {
+    .skin-oasis .wds-community-header__wordmark img {
+        background-size: 138px 49px;
+        height: 49px;
+        padding-top: 49px;
+        width: 41px;
+    }
+}
+.skin-oasis.editor .EditPageHeader > .wordmark img {
+    background-size: 127px 45px;
+    padding-top: 45px;
+    height: 45px;
+    width: 389px;
+}
  
 /** Community Council Wiki **/
  
