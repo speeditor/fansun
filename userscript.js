@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FANSUN powered by Darkness
 // @namespace    http://community.wikia.com/Special:MyPage
-// @version      1.0c
+// @version      1.0d
 // @description  Dark theme for official FANDOM wikis.
 // @author       http://dev.wikia.com/wiki/User:Speedit
 // @run-at       document-start
@@ -83,7 +83,7 @@ var FANSUN = {
                     },
                     'unboot': {
                         fn: function() {
-                            FANSUN.util.unboot('ext');
+                            // FANSUN.util.unboot('ext');
                         },
                         d: $.ready
                     }
@@ -100,7 +100,7 @@ var FANSUN = {
             "background-image": "",
             "background-image-height": "801",
             "background-image-width": "1700",
-            "color-body": "#2b323b",
+            "color-body": "#2c343d",
             "color-body-middle": "#2b323b",
             "color-buttons": "#00b7e0",
             "color-community-header": "#404a57",
