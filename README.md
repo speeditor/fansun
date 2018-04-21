@@ -5,4 +5,4 @@ Dark theme for official FANDOM wikis. Replaces the colors on official FANDOM wik
 
 ## Installation
 Add it with your favourite userscript manager: 
->https://greasyfork.org/scripts/38229-fansun-powered-by-darkness
+>https://greasyfork.org/scripts/38229-fansun
