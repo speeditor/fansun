@@ -158,7 +158,7 @@ var FANSUN = {
                                 FANSUN.sass.cache[mode] :
                                 urlArray[6],
                             newSassString = FANSUN.util.param(FANSUN.sass.params);
-                        FANSUN.sass.cache[mode] = FANSUN.sass.cache.length > 0 ?
+                        FANSUN.sass.cache[mode] = FANSUN.sass.cache[mode].length > 0 ?
                             FANSUN.sass.cache[mode] :
                             sassUrlString;
                         urlArray.splice(6, 1, newSassString);
