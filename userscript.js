@@ -101,7 +101,7 @@ var FANSUN = {
             "background-image-height": "801",
             "background-image-width": "1700",
             "color-body": "#2c343d",
-            "color-body-middle": "#2b323b",
+            "color-body-middle": "#2c343d",
             "color-buttons": "#00b7e0",
             "color-community-header": "#404a57",
             "color-header": "#404a57",
@@ -216,7 +216,7 @@ var FANSUN = {
                     }
                 };
                 Object.keys(style.attr).forEach(style.map);
-                style.el.textContent = 'body { background: #2b323b; color: #d5d4d4; } a { color: #00c8e0 }';
+                style.el.textContent = 'body { background: #2c343d; color: #d5d4d4; } a { color: #00c8e0 }';
                 document.head.append(style.el);
                 // Head styling iterator
                 [].forEach.call(document.head.childNodes, FANSUN.sass.init);
