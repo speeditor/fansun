@@ -1,100 +1,117 @@
-/* FANSUN powered by Darkness stylesheet */
- 
-/** Extension styling and other anti-pattern fixes **/
- 
+/* FANSUN stylesheet */
+
+/** Anti-pattern fixes **/
+
 /*** Code formatting ***/
-.skin-oasis .mw-geshi {
+body.skin-oasis .mw-geshi {
     background-color: #2e353e;
     border: 1px dashed #00b7e0;
     color: #d5d4d4;
 }
-.skin-oasis code {
+body.skin-oasis code {
     color: #fff;
     background-color: #4c545e;
     border: 1px solid #696b72;
 }
-.skin-oasis #theme-solarized-light,
-.skin-oasis .ace-solarized-light {
+body.skin-oasis #theme-solarized-light,
+body.skin-oasis .ace-solarized-light {
     background-color: #002b36;
     color: #93a1a1;
 }
- 
+body.codeeditor .ace-solarized-light .ace_gutter {
+    background: #01313f;
+    color: #d0edf7;
+}
+body.codeeditor .ace-solarized-light .ace_marker-layer .ace_active-line,
+body.codeeditor .ace-solarized-light .ace_marker-layer .ace_selection {
+    background: rgba(255, 255, 255, 0.1);
+}
+body.codeeditor .ace-solarized-light .ace_marker-layer .ace_selected-word {
+    border: 1px solid #073642;
+}
+body.codeeditor .ace-solarized-light .ace_gutter-active-line {
+    background-color: #0d3440;
+}
+body.codeeditor .ace-solarized-light .ace_indent-guide {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNg0Db1ZVCxc/sPAAd4AlUHlLenAAAAAElFTkSuQmCC) right repeat-y;
+}
+
 /*** White page border ***/
-.skin-oasis .WikiaPage,
-.skin-oasis .WikiaArticle .toc {
+body.skin-oasis .WikiaPage,
+body.skin-oasis .WikiaArticle .toc {
     border-color: #616871;
 }
- 
+
 /** Dev Wiki **/
- 
+
 /*** MediaWiki:Common.css ***/
 /**** Template:Languages ****/
-.switch-lang .selected a {
-    color: #fff;   
+.wiki-dev.skin-oasis .switch-lang .selected a {
+    color: #fff;  
 }
 /**** Module:Languages ****/
-.transclude-notice-top {
+.wiki-dev.skin-oasis .transclude-notice-top {
     border-bottom: 1px solid #305663;
 }
-.transclude-notice-bottom {
+.wiki-dev.skin-oasis .transclude-notice-bottom {
     border-top: 1px solid #305663;
 }
 /**** Template:Documentation ****/
-.template-documentation .template-documentation-langs li.selected a {
+.wiki-dev.skin-oasis .template-documentation .template-documentation-langs li.selected a {
     color: #fff;
 }
-.template-documentation {
+.wiki-dev.skin-oasis .template-documentation {
     border: 1px solid #2b6472;
 }
-.template-documentation .template-documentation-header {
+.wiki-dev.skin-oasis .template-documentation .template-documentation-header {
     background: #2b6472;
     border-bottom: 1px solid #2b6472;
 }
-.template-documentation .template-documentation-langs {
+.wiki-dev.skin-oasis .template-documentation .template-documentation-langs {
     background: #305663;
     border-bottom: 1px solid #2b6472;
 }
-.template-documentation .template-documentation-content .transclude-notice-bottom:last-child {
+.wiki-dev.skin-oasis .template-documentation .template-documentation-content .transclude-notice-bottom:last-child {
     background: #305663;
     border-top: 1px solid #305663;
 }
- 
+
 /*** MediaWiki:Wikia.css ***/
- 
+
 /*** MediaWiki:Mainpage.css ***/
-.wiki-dev.mainpage #mw-content-text {
+.wiki-dev.skin-oasis.mainpage #mw-content-text {
     color: #fff;
     font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-.wiki-dev.mainpage .forum-activity {
+.wiki-dev.skin-oasis.mainpage .forum-activity {
     color: #d5d4d4;
 }
-.wiki-dev.mainpage .foci {
+.wiki-dev.skin-oasis.mainpage .foci {
     color: #d5d4d4;
     margin: 0 auto;
 }
-.wiki-dev.foci .module {
+.wiki-dev.skin-oasis .foci .module {
     width: calc(32% - 40px);
 }
-.wiki-dev .foci .header,
-.wiki-dev .what-we-do .header,
-.wiki-dev .things-to-remember .header {
+.wiki-dev.skin-oasis .foci .header,
+.wiki-dev.skin-oasis .what-we-do .header,
+.wiki-dev.skin-oasis .things-to-remember .header {
     color: #00b7e0;
 }
-.wiki-dev .things-to-remember .description {
+.wiki-dev.skin-oasis .things-to-remember .description {
     color: #d5d4d4;
 }
-.wiki-dev .introduction .header {
+.wiki-dev.skin-oasis .introduction .header {
     color: #00b7e0;
 }
- 
+
 /** Community Central Wiki **/
- 
+
 /*** Wordmark rollback ***/
 .skin-oasis.wiki-wikia .wds-community-header__wordmark img,
 .skin-oasis.wiki-wikia.editor .EditPageHeader > .wordmark img,
-.ChatWindow #ChatHeader .wordmark img[src*="central"],
-.ChatWindow #Rail .public .wordmark[src*="central"] {
+.wiki-wikia.ChatWindow #ChatHeader .wordmark img,
+.wiki-wikia.ChatWindow #Rail .public .wordmark {
     background-repeat: no-repeat;
     background-position: top left;
     box-sizing: border-box;
@@ -122,153 +139,156 @@
     height: 45px;
     width: 86px;
 }
-.ChatWindow #ChatHeader .wordmark img[src*="central"],
-.ChatWindow #Rail .public .wordmark[src*="central"] {
+.wiki-wikia.ChatWindow #ChatHeader .wordmark img,
+.wiki-wikia.ChatWindow #Rail .public .wordmark {
     background-image: url('https://vignette.wikia.nocookie.net/central/images/8/89/Wiki-wordmark.png/revision/20180206165044/scale-to-width-down/58');
     height: 30px;
     padding-top: 30px;
     width: 58px;
 }
- 
+
 /*** MediaWiki:Wikia.css ***/
- 
+
 /**** Interlanguage link footer ****/
-.wiki-wikia.mainpage .WikiaArticleInterlang,
-.wiki-wikia.mw-special-Contact .WikiaArticleInterlang,
-.wiki-wikia.mw-special-Forum .WikiaArticleInterlang {
+.wiki-wikia.skin-oasis.mainpage .WikiaArticleInterlang,
+.wiki-wikia.skin-oasis.mw-special-Contact .WikiaArticleInterlang,
+.wiki-wikia.skin-oasis.mw-special-Forum .WikiaArticleInterlang {
     background: none;
     border: 1px solid #616871;
 }
 /**** Portable Infoboxes ****/
-.wiki-wikia .portable-infobox.pi-theme-notes .pi-header {
+.wiki-wikia.skin-oasis .portable-infobox.pi-theme-notes .pi-header {
     background: #394e60;
 }
-.pi-theme-StaffCard, .pi-theme-VolunteerCard {
+.wiki-wikia.skin-oasis .pi-theme-StaffCard,
+.wiki-wikia.skin-oasis .pi-theme-VolunteerCard {
     border: 1px solid #2b6472;
 }
 /*** Mainpage.css ***/
 /**** General ****/
-.wiki-wikia.mainpage .mainpage-box h2 {
+.wiki-wikia.skin-oasis.mainpage .mainpage-box h2 {
     color: #b7b8ba;
 }
-.wiki-wikia.mainpage .mainpage-box h2::before,
-.wiki-wikia.mainpage .mainpage-box h2::after {
+.wiki-wikia.skin-oasis.mainpage .mainpage-box h2::before,
+.wiki-wikia.skin-oasis.mainpage .mainpage-box h2::after {
     background-color: #a2a4a6;
 }
-.wiki-wikia.mainpage .mainpage-box h3 {
+.wiki-wikia.skin-oasis.mainpage .mainpage-box h3 {
     color: #cfcfcf;
 }
-.wiki-wikia.mainpage .mainpage-more a,
-.wiki-wikia.mainpage .mainpage-more .recent a:active,
-.wiki-wikia.mainpage .mainpage-more .recent a:visited {
+.wiki-wikia.skin-oasis.mainpage .mainpage-more a,
+.wiki-wikia.skin-oasis.mainpage .mainpage-more .recent a:active,
+.wiki-wikia.skin-oasis.mainpage .mainpage-more .recent a:visited {
     color: #4a90e2;
 }
-.wiki-wikia.mainpage .mainpage-more a:hover {
+.wiki-wikia.skin-oasis.mainpage .mainpage-more a:hover {
     color: #6aaefc;
 }
 /**** Blogs ****/
-.wiki-wikia.mainpage .mainpage-blogs .blog-info {
+.wiki-wikia.skin-oasis.mainpage .mainpage-blogs .blog-info {
     border: 1px solid #3b475b;
 }
-.wiki-wikia.mainpage .mainpage-blogs .blog-info .author a,
-.wiki-wikia.mainpage .mainpage-blogs .blog-info .author a:active,
-.wiki-wikia.mainpage .mainpage-blogs .blog-info .author a:visited {
+.wiki-wikia.skin-oasis.mainpage .mainpage-blogs .blog-info .author a,
+.wiki-wikia.skin-oasis.mainpage .mainpage-blogs .blog-info .author a:active,
+.wiki-wikia.skin-oasis.mainpage .mainpage-blogs .blog-info .author a:visited {
     color: #fff;
 }
-.wiki-wikia.mainpage .mainpage-blogs .blog-info .author a:hover {
+.wiki-wikia.skin-oasis.mainpage .mainpage-blogs .blog-info .author a:hover {
     color: #aaa;
 }
-.wiki-wikia.mainpage .mainpage-blogs .blog-info .timestamp {
+.wiki-wikia.skin-oasis.mainpage .mainpage-blogs .blog-info .timestamp {
     color: #aeafb2;
 }
-.wiki-wikia.mainpage .mainpage-blogs .blog-info .title a,
-.wiki-wikia.mainpage .mainpage-blogs .blog-info .title a:active,
-.wiki-wikia.mainpage .mainpage-blogs .blog-info .title a:visited {
+.wiki-wikia.skin-oasis.mainpage .mainpage-blogs .blog-info .title a,
+.wiki-wikia.skin-oasis.mainpage .mainpage-blogs .blog-info .title a:active,
+.wiki-wikia.skin-oasis.mainpage .mainpage-blogs .blog-info .title a:visited {
     color: #4a90e2;
 }
-.wiki-wikia.mainpage .mainpage-blogs .blog .title a:hover {
+.wiki-wikia.skin-oasis.mainpage .mainpage-blogs .blog .title a:hover {
     color: #6aaefc;
 }
 /**** FANDOM University ****/
-.wiki-wikia.mainpage .mainpage-wikiauniversity h2::before,
-.wiki-wikia.mainpage .mainpage-wikiauniversity h2::after {
+.wiki-wikia.skin-oasis.mainpage .mainpage-wikiauniversity h2::before,
+.wiki-wikia.skin-oasis.mainpage .mainpage-wikiauniversity h2::after {
     background: #b3b8bc none repeat scroll 0% 0%;
 }
-.wiki-wikia.mainpage .mainpage-wikiauniversity .description {
+.wiki-wikia.skin-oasis.mainpage .mainpage-wikiauniversity .description {
     color: #656e78;
 }
-.wiki-wikia.mainpage .mainpage-wikiauniversity .videos figcaption .title {
+.wiki-wikia.skin-oasis.mainpage .mainpage-wikiauniversity .videos figcaption .title {
     color: #4a90e2;
 }
-.wiki-wikia.mainpage .mainpage-wikiauniversity .videos .details .title {
+.wiki-wikia.skin-oasis.mainpage .mainpage-wikiauniversity .videos .details .title {
     color: #4a90e2;
 }
-.wiki-wikia.mainpage .mainpage-wikiauniversity .videos .details .title a, .mainpage-wikiauniversity .videos .details .title a:active, .mainpage-wikiauniversity .videos .details .title a:visited {
+.wiki-wikia.skin-oasis.mainpage .mainpage-wikiauniversity .videos .details .title a,
+.wiki-wikia.skin-oasis.mainpage .mainpage-wikiauniversity .videos .details .title a:active,
+.wiki-wikia.skin-oasis.mainpage .mainpage-wikiauniversity .videos .details .title a:visited {
     color: #4a90e2;
 }
-.wiki-wikia.mainpage .mainpage-wikiauniversity .videos .details .title a:hover {
+.wiki-wikia.skin-oasis.mainpage .mainpage-wikiauniversity .videos .details .title a:hover {
     color: #6aaefc;
 }
-.wiki-wikia.mainpage .mainpage-wikiauniversity .videos .details .duration {
+.wiki-wikia.skin-oasis.mainpage .mainpage-wikiauniversity .videos .details .duration {
     color: #c5ceda;
 }
 /**** FAQ ****/
-.wiki-wikia.mainpage .mainpage-faq h4 {
+.wiki-wikia.skin-oasis.mainpage .mainpage-faq h4 {
     background: #3a4756 none repeat scroll 0% 0%;
     color: #b7b8ba;
 }
-.wiki-wikia.mainpage .mainpage-faq .faq-list {
+.wiki-wikia.skin-oasis.mainpage .mainpage-faq .faq-list {
     background-color: #384251;
     border: solid #3a475f;
     border-width: 0 1px 1px;
 }
-.wiki-wikia.mainpage .mainpage-faq .faq-list a,
-.mainpage-faq .faq-list a:active,
-.mainpage-faq .faq-list a:visited {
+.wiki-wikia.skin-oasis.mainpage .mainpage-faq .faq-list a,
+.wiki-wikia.skin-oasis.mainpage .mainpage-faq .faq-list a:active,
+.wiki-wikia.skin-oasis.mainpage .mainpage-faq .faq-list a:visited {
     color: #4a90e2;
 }
-.wiki-wikia.mainpage .mainpage-faq .faq-list a:hover {
+.wiki-wikia.skin-oasis.mainpage .mainpage-faq .faq-list a:hover {
     color: #6aaefc;
 }
 /**** Connect ****/
-.wiki-wikia.mainpage .mainpage-connect .staff li {
+.wiki-wikia.skin-oasis.mainpage .mainpage-connect .staff li {
     border: 1px solid #3b475b;
 }
-.wiki-wikia.mainpage .mainpage-connect .staff .name a,
-.wiki-wikia.mainpage .mainpage-connect .staff .name a:active,
-.wiki-wikia.mainpage .mainpage-connect .staff .name a:visited {
+.wiki-wikia.skin-oasis.mainpage .mainpage-connect .staff .name a,
+.wiki-wikia.skin-oasis.mainpage .mainpage-connect .staff .name a:active,
+.wiki-wikia.skin-oasis.mainpage .mainpage-connect .staff .name a:visited {
     color: #fff;
 }
-.wiki-wikia.mainpage .mainpage-connect .staff .name a:hover {
+.wiki-wikia.skin-oasis.mainpage .mainpage-connect .staff .name a:hover {
     color: #aaa;
 }
 /**** Social ****/
-.wiki-wikia.mainpage .mainpage-social {
+.wiki-wikia.skin-oasis.mainpage .mainpage-social {
      background-color: #373f4a;
 }
 /**** Highlight on cover code ****/
-.wiki-wikia.mainpage .mainpage-box .staff li:hover,
-.wiki-wikia.mainpage .mainpage-box .featured:hover,
-.wiki-wikia.mainpage .mainpage-box .not-featured:hover {
+.wiki-wikia.skin-oasis.mainpage .mainpage-box .staff li:hover,
+.wiki-wikia.skin-oasis.mainpage .mainpage-box .featured:hover,
+.wiki-wikia.skin-oasis.mainpage .mainpage-box .not-featured:hover {
     background: #3a4756;
 }
- 
+
 /** Portability Hub **/
- 
+
 /*** MediaWiki:Common.css ***/
-.wiki-infobox.mainpage #mw-content-text img[data-image-name="MainPageQuote2.png"] {
+.wiki-infobox.skin-oasis.mainpage #mw-content-text img[data-image-name="MainPageQuote2.png"] {
     filter: brightness(5.5) saturate(1.3);
 }
-.wiki-infobox.mainpage .MPheading-text {
+.wiki-infobox.skin-oasis.mainpage .MPheading-text {
     color: #00b7e0;
 }
 
 /** VSTF Wiki **/
 
 /*** Wordmark cleanup (crop) ***/
-.skin-oasis.wiki-vstf .wds-community-header__wordmark img,
-.skin-oasis.wiki-vstf.editor .EditPageHeader > .wordmark img {
-    background-image: url('https://vignette4.wikia.nocookie.net/vstf/images/8/89/Wiki-wordmark.png');
+.wiki-vstf.skin-oasis .wds-community-header__wordmark img,
+.wiki-vstf.skin-oasis.editor .EditPageHeader > .wordmark img {
+    background-image: url('https://vignette.wikia.nocookie.net/vstf/images/8/89/Wiki-wordmark.png');
     background-repeat: no-repeat;
     background-position: top left;
     box-sizing: border-box;
@@ -277,29 +297,29 @@
     width: 55px;
 }
 @media only screen and (max-width: 1083px) {
-    .skin-oasis.wiki-vstf .wds-community-header__wordmark img {
+    .wiki-vstf.skin-oasis.editor .wds-community-header__wordmark img {
         background-size: 138px 49px;
         height: 49px;
         padding-top: 49px;
         width: 41px;
     }
 }
-.skin-oasis.wiki-vstf.editor .EditPageHeader > .wordmark img {
+.wiki-vstf.skin-oasis.editor .EditPageHeader > .wordmark img {
     background-size: 127px 45px;
     padding-top: 45px;
     height: 45px;
     width: 389px;
 }
- 
+
 /** Community Council Wiki **/
- 
+
 /*** Mainpage ***/
-.wiki-communitycouncil.mainpage .lcs-container > div:first-child {
+.wiki-communitycouncil.skin-oasis.mainpage .lcs-container > div:first-child {
     background: #574d41 !important;
 }
-.wiki-communitycouncil.mainpage .lcs-container > div:nth-child(2) {
+.wiki-communitycouncil.skin-oasis.mainpage .lcs-container > div:nth-child(2) {
     background: #304d69 !important;
 }
-.wiki-communitycouncil.mainpage .lcs-container > div:nth-child(3) {
+.wiki-communitycouncil.skin-oasis.mainpage .lcs-container > div:nth-child(3) {
     background: #305f56 !important;
 }
